@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/home');
+//Route::redirect('/', '/home');
+Route::get('/test', function(){
+    return view('ui.illustrations.list-illustrations');
+});
+Route::get('/dashboard', function(){
+    return view('welcome');
+});
 
 Auth::routes(['register' => false]);
 
