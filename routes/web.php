@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::redirect('/', '/home');
-Route::get('/test', function(){
+/*Route::get('/test', function(){
     return view('ui.illustrations.list-illustrations');
-});
+});*/
 Route::get('/dashboard', function(){
     return view('welcome');
 });
