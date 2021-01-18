@@ -15,12 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Route::redirect('/', '/home');
-/*Route::get('/test', function(){
-    return view('ui.illustrations.list-illustrations');
-});*/
+
 Route::get('/dashboard', function(){
     return view('welcome');
 });
+
+Route::resource('roles', 'RoleController');
+Route::resource('users', 'UserController');
+Route::resource('tags', 'TagController');
+Route::resource('illustrations', 'IllustrationController');
 
 Auth::routes(['register' => false]);
 

@@ -12,11 +12,20 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <link rel="shortcut icon" href="/master/img/favicon.png">
+
+    @notifyCss
+
     <link href="/master/css/application.min.css" rel="stylesheet">
     <!--[if IE 9]>
     <link href="/master/css/application-ie9-part2.css" rel="stylesheet">
     <![endif]-->
+    @livewireStyles
     @stack('css')
+    <style>
+        .inset-0{
+            margin: 45px 45px 0 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -80,5 +89,11 @@
     <!-- page specific js -->
     <script src="/master/js/index.js"></script>
     @stack('js')
+
+    @livewireScripts
+
+    @include('notify::messages')
+    @notifyJs
+
 </body>
 </html>

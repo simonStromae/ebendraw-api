@@ -10,7 +10,7 @@
                             Liste <span class="fw-semi-bold">Rôles</span>
                         </h5>
                         <div class="widget-controls">
-                            <a href="#" class="font-weight-bold text-dark"><i class="fi flaticon-add-3"></i> Ajouter un rôle</a>
+                            <a href="{{ route('roles.create') }}" class="font-weight-bold text-dark"><i class="fi flaticon-add-3"></i> Ajouter un rôle</a>
                         </div>
                     </header>
                     <div class="widget-body">
@@ -23,48 +23,37 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="font-weight-bold">
-                                        Administrateur
-                                    </td>
-                                    <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Accusamus autem cupiditate doloribus eos explicabo fugiat harum id impedit iste laboriosam laudantium natus,
-                                        omnis quibusdam ratione repellat sequi sint vitae voluptates.
-                                    </td>
-                                    <td class="width-150">
-                                        <div class="btn-group">
-                                            <button class="btn btn-sm btn-inverse dropdown-toggle" data-toggle="dropdown">
-                                                &nbsp; Actions &nbsp;
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a class="dropdown-item" href="#">Modifier</a></li>
-                                                <li><a class="dropdown-item" href="#">Supprimer</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-weight-bold">
-                                        Illustrateur
-                                    </td>
-                                    <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Accusamus autem cupiditate doloribus eos explicabo fugiat harum id impedit iste laboriosam laudantium natus,
-                                        omnis quibusdam ratione repellat sequi sint vitae voluptates.
-                                    </td>
-                                    <td class="width-150">
-                                        <div class="btn-group">
-                                            <button class="btn btn-sm btn-inverse dropdown-toggle" data-toggle="dropdown">
-                                                &nbsp; Actions &nbsp;
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a class="dropdown-item" href="#">Modifier</a></li>
-                                                <li><a class="dropdown-item" href="#">Supprimer</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @forelse($roles as $role)
+                                    <tr>
+                                        <td class="font-weight-bold">
+                                            {{ $role->name }}
+                                        </td>
+                                        <td>{{ $role->description }}</td>
+                                        <td class="width-150">
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-inverse dropdown-toggle" data-toggle="dropdown">
+                                                    &nbsp; Actions &nbsp;
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a class="dropdown-item" href="{{ route('roles.edit', $role->id) }}">Modifier</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-{{ $role->id }}">Supprimer</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        @include('layouts.partials.delete-modal',[
+                                           'id'=> $role->id,
+                                          "route"=> route('roles.destroy', $role->id),
+                                          "sms"=> "Vouler-vous supprimer définitivement le rôle : <strong>$role->name</strong> ?"
+                                       ])
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3">
+                                            Aucun rôle n'a été défini pour l'instant. vous pouvez profiter pour en créer
+                                            <i class="fi flaticon-like"></i><a href="{{ route('roles.create') }}" class="ml-2 text-danger">Ajouter un rôle</a>
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

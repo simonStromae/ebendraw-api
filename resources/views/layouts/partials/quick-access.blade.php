@@ -12,19 +12,19 @@
         </header>
         <div class="widget-body mt-3">
             <div class="mt-4">
-                <a href="#" role="button" class="btn btn-warning btn-rounded-f btn-block fs-mini text-white">
+                <a href="{{ route('tags.create') }}" role="button" class="btn btn-warning btn-rounded-f btn-block fs-mini text-white">
                     <i class="fi flaticon-add"></i>
                     Nouveau Tag
                 </a>
-                <a href="#" role="button" class="btn btn-danger btn-rounded-f btn-block fs-mini">
+                <a href="{{ route('illustrations.create') }}" role="button" class="btn btn-danger btn-rounded-f btn-block fs-mini">
                     <i class="fi flaticon-add"></i>
                     Nouvelle Illustration
                 </a>
-                <a href="#" role="button" class="btn btn-secondary btn-rounded-f btn-block fs-mini">
+                <a href="{{ route('roles.create') }}" role="button" class="btn btn-secondary btn-rounded-f btn-block fs-mini">
                     <i class="fi flaticon-add"></i>
                     Nouveau Rôle
                 </a>
-                <a href="#" role="button" class="btn btn-dark btn-rounded-f btn-block fs-mini">
+                <a href="{{ route('users.create') }}" role="button" class="btn btn-dark btn-rounded-f btn-block fs-mini">
                     <i class="fi flaticon-add"></i>
                     Nouveau Utilisateur
                 </a>

@@ -39,7 +39,7 @@
         <ul class="sidebar-nav">
             <li class="">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="#">
+                <a href="{{ route('tags.index') }}">
                             <span class="icon">
                                 <i class="fi flaticon-controls"></i>
                             </span>
@@ -48,7 +48,7 @@
             </li>
             <li class="">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="#">
+                <a href="{{ route('illustrations.index') }}">
                             <span class="icon">
                                 <i class="fi flaticon-equal-1"></i>
                             </span>
@@ -61,7 +61,7 @@
         <ul class="sidebar-nav">
             <li class="">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="#">
+                <a href="{{ route('roles.index') }}">
                             <span class="icon">
                                 <i class="fi flaticon-route"></i>
                             </span>
@@ -70,7 +70,7 @@
             </li>
             <li class="">
                 <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="#">
+                <a href="{{ route('users.index') }}">
                             <span class="icon">
                                 <i class="fi flaticon-users"></i>
                             </span>
