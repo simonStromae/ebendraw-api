@@ -14,17 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::redirect('/', '/home');
+Route::redirect('/', '/login');
 
-Route::get('/dashboard', function(){
-    return view('welcome');
+
+Route::middleware("auth")->group(function (){
+    Route::get('/dashboard', function(){
+        return view('welcome');
+    })->name('dashboard');
+
+    Route::resource('roles', 'RoleController');
+    Route::resource('users', 'UserController');
+    Route::resource('tags', 'TagController');
+    Route::resource('illustrations', 'IllustrationController');
 });
-
-Route::resource('roles', 'RoleController');
-Route::resource('users', 'UserController');
-Route::resource('tags', 'TagController');
-Route::resource('illustrations', 'IllustrationController');
-
 Auth::routes(['register' => false]);
-
+/*Route::get('/test', function (){
+    return \Illuminate\Support\Facades\Hash::make('password');
+});*/
 Route::get('/home', 'HomeController@index')->name('home');

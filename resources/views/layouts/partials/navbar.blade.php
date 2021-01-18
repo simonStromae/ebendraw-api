@@ -50,7 +50,7 @@
                             <img class="rounded-circle" src="/master/demo/img/people/a5.jpg" alt="...">
                         </span>
     &nbsp;                   &nbsp;
-                        Simon <strong>Stromae</strong>&nbsp;
+                        <strong>{{ user_name('username') }}</strong>&nbsp;
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a class="dropdown-item" href="#"><i class="glyphicon glyphicon-user"></i> &nbsp; Mon
@@ -60,7 +60,16 @@
                         <li><a class="dropdown-item" href="#">Mes illustration &nbsp;&nbsp;<span
                                     class="badge badge-pill bg-danger animated bounceIn">9</span></a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="la la-sign-out"></i> &nbsp; Se Déconnecter</a></li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="#"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="la la-sign-out"></i> &nbsp; Se Déconnecter
+                            </a>
+                            <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
