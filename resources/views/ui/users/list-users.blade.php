@@ -27,9 +27,9 @@
                             <tbody>
                                 @forelse($users as $user)
                                     <tr>
-                                        <td class="d-none d-md-table-cell">{{ $key }}</td>
+                                        <td class="d-none d-md-table-cell">{{ $user->id }}</td>
                                         <td>
-                                            <img class="img-rounded" src="/master/demo/img/pictures/1.jpg" alt="" height="50px">
+                                            <img class="img-rounded" src="/master/demo/img/pictures/1.jpg" alt="" width="80px">
                                         </td>
                                         <td class="d-none d-md-table-cell">
                                             <p class="no-margin">
@@ -57,7 +57,7 @@
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <li><a class="dropdown-item" href="{{ route('users.show', $user->id) }}">Détails</a></li>
                                                     <li><a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">Modifier</a></li>
-                                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-{{ $user->id }}>Supprimer</a></li>
+                                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-{{ $user->id }}">Supprimer</a></li>
                                                 </ul>
                                             </div>
                                         </td>

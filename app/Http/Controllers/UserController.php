@@ -45,21 +45,27 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        return view('ui.users.edit-user')->with('user', User::findOrFail($id));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        if(count($user->illustrations) === 0) {
+            $user->delete();
+            notify()->success('Cet utilisateur a bien été supprimé', 'Suppression utilisateur');
+        }else{
+            notify()->error('Désolé ! Mais il est impossible d\'exécuter cette suppression car l\'utilisateur que vous essayez de supprimer est dispose de plusieurs illustrations dans le système', 'Erreur suppression');
+        }
+
+        return redirect()->route('users.index');
     }
 }

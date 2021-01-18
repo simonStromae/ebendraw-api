@@ -43,4 +43,15 @@ class User extends Authenticatable
     public function illustrations(){
         return $this->hasMany('App\Illustration');
     }
+
+    /**
+     * Set the role's name.
+     *
+     * @param string $value
+     * @return void
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucfirst($value);
+    }
 }
