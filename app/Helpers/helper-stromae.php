@@ -3,6 +3,7 @@
 use App\News;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 if(!function_exists('generatePassword')){
     /**
@@ -131,8 +132,25 @@ if(!function_exists('addZero')){
     }
 }
 
-if(!function_exists('testimonials')){
-    function testimonials(){
-        return \App\Testimonial::all();
+if(!function_exists('saveSvg')){
+    function saveSvg($svg_file, string $svg_name){
+        $filename = implode('-', explode(' ', $svg_name))."-".uniqid(date('now_')).".".$svg_file->getClientOriginalExtension();;
+
+        $svg_file->storeAs('public/svg', $filename);
+
+        return $filename;
+    }
+}
+
+
+if(!function_exists('show_svg')){
+    function show_svg(string $svg):string{
+        return asset('storage').'/svg/'.$svg;
+    }
+}
+
+if(!function_exists('my_illustrations')){
+    function my_illustrations():int{
+        return Auth::user()->illustrations->count();
     }
 }

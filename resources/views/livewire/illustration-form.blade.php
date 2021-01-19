@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center">
     <section class="widget mb-0 h-100 w-75">
         <header>
-            <h4 class="font-weight-bold">Ajouter une illustration</h4>
+            <h4 class="font-weight-bold">{{ $action }} une illustration</h4>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cum, deserunt.
                 A cupiditate in ipsum nostrum quaerat, quam repellat rerum saepe unde.
@@ -9,35 +9,45 @@
             </p>
         </header>
         <div class="widget-body">
-            <form>
+            <form wire:submit.prevent="submitForm">
                 <div class="form-group">
                     <label class="font-weight-bold" for="name">Nom</label>
-                    <input type="text" class="form-control" id="name">
+                    <input wire:model.lazy="name" type="text" class="@error('name') is-invalid @enderror form-control" id="name">
+                    @error("name")
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label class="font-weight-bold" for="desc">Description</label>
-                    <textarea class="form-control" id="desc"></textarea>
+                    <textarea wire:model.lazy="description" class="@error('description') is-invalid @enderror form-control" id="desc"></textarea>
+                    @error("description")
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label class="font-weight-bold" for="file">Svg</label>
-                    <input type="file" class="form-control-file" id="file">
+                    <input wire:model.lazy="svg" type="file" class="@error('svg') is-invalid @enderror form-control-file" id="file">
+                    @error("svg")
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" wire:ignore>
                     <label class="font-weight-bold" for="file">Mots clés</label>
-                    <select class="form-control selectpicker" data-live-search="true" multiple="multiple" title="Ajoutez des mots clés...">
-                        <option value="AL">Alabama</option>
-                        <option value="Dla">Douala</option>
-                        <option value="Yde">Yaoundé</option>
-                        <option value="Baf">Bafoussam</option>
-                        <option value="WY">Wyoming</option>
+                    <select wire:model.lazy="tags" class="@error('tags') is-invalid @enderror form-control selectpicker" data-live-search="true" multiple="multiple" title="Ajoutez des mots clés...">
+                        @foreach($tag_array as $tag)
+                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                        @endforeach
                     </select>
+                    @error("tags")
+                        <span class="invalid-feedback">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-dark float-right">Ajouter</button>
+                    <button type="submit" class="btn btn-dark float-right">{{ $action }}</button>
                 </div>
             </form>
         </div>

@@ -5,7 +5,7 @@ use App\Tag;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
-class SearchIllustration {
+class SearchIllustrationService {
 
     /**
      * creation méthode illustrations a la collection

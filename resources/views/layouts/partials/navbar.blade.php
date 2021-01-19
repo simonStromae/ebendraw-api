@@ -56,9 +56,13 @@
                         <li><a class="dropdown-item" href="#"><i class="glyphicon glyphicon-user"></i> &nbsp; Mon
                                 Compte</a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Profil</a></li>
-                        <li><a class="dropdown-item" href="#">Mes illustration &nbsp;&nbsp;<span
-                                    class="badge badge-pill bg-danger animated bounceIn">9</span></a></li>
+                        <li><a class="dropdown-item" href="{{ route('my_profile') }}">Profil</a></li>
+                        <li><a class="dropdown-item" href="{{ route('my_illustrations') }}">Mes illustrations &nbsp;&nbsp;
+                                @if(my_illustrations() > 0)
+                                    <span class="badge badge-pill bg-danger animated bounceIn">{{ my_illustrations() }}</span>
+                                @endif
+                            </a>
+                        </li>
                         <li class="dropdown-divider"></li>
                         <li>
                             <a class="dropdown-item"

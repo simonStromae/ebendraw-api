@@ -26,6 +26,14 @@ Route::middleware("auth")->group(function (){
     Route::resource('users', 'UserController');
     Route::resource('tags', 'TagController');
     Route::resource('illustrations', 'IllustrationController');
+
+    Route::get('my-illustrations', function (){
+       return view('auth.my_illustrations');
+    })->name('my_illustrations');
+
+    Route::get('my-profile', function (){
+        return view('auth.my_profile');
+    })->name('my_profile');
 });
 Auth::routes(['register' => false]);
 /*Route::get('/test', function (){

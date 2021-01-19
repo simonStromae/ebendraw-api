@@ -46,7 +46,7 @@
             @yield('content')
 
             <footer class="content-footer">
-                Copyright 2020 <span class="text-danger font-weight-bolder">ALpha Labo</span>, Inc.
+                Copyright 2020 <span class="text-danger font-weight-bolder">ALpha Labo</span>, Inc. Version 1.0.0
             </footer>
         </main>
     </div>

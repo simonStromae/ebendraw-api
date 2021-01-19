@@ -14,4 +14,23 @@ class Illustration extends Model
     public function tags(){
         return $this->belongsToMany('App\Tag');
     }
+
+    /**
+     * Get the illustration's name.
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getNameAttribute($value){
+        return ucfirst($value);
+    }
+
+    /**
+     * Get the illustration's updated date.
+     * @param $value
+     * @return false|string
+     */
+    public function getUpdatedAtAttribute($value){
+        return date('d M, Y', strtotime($value));
+    }
 }
