@@ -29,7 +29,7 @@
                                     <tr>
                                         <td class="d-none d-md-table-cell">{{ $user->id }}</td>
                                         <td>
-                                            <img class="img-rounded" src="/master/demo/img/pictures/1.jpg" alt="" width="80px">
+                                            <img class="img-rounded" src="{{ show_avatar($user->avatar) }}" alt="" width="80px">
                                         </td>
                                         <td class="d-none d-md-table-cell">
                                             <p class="no-margin">

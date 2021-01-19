@@ -149,6 +149,20 @@ if(!function_exists('show_svg')){
     }
 }
 
+if(!function_exists('show_avatar')){
+    /**
+     * Obtenir le chemin vers l'avatar de l'utilisateur
+     * @param string|null $avatar
+     * @return string
+     */
+    function show_avatar(string $avatar=null):string{
+        if (is_null($avatar))
+            $avatar = Auth::user()->avatar;
+
+        return !empty ($avatar) ? asset('storage').'/avatars/'.$avatar : "/master/demo/img/people/a5.jpg";
+    }
+}
+
 if(!function_exists('my_illustrations')){
     function my_illustrations():int{
         return Auth::user()->illustrations->count();
