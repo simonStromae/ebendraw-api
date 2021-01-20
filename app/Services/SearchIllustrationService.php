@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Resources\IllustrationResource;
 use App\Tag;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -22,8 +23,10 @@ class SearchIllustrationService {
             });
         });
 
-        return Tag::all()->filter(function ($tag) use ($searchInput) {
+        $result = Tag::paginate(24)->filter(function ($tag) use ($searchInput) {
            return Str::contains($tag['name'], $searchInput);
         })->illustrations();
+
+        return IllustrationResource::collection($result);
     }
 }
