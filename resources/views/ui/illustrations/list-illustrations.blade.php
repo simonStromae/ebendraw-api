@@ -1,4 +1,6 @@
-@extends('layouts.app', ['breadcrumbs' => ['Illustrations', 'Listes illustrations']])
+@extends('layouts.app', ['breadcrumbs' => ['Illustrations', 'Listes illustrations'], 'illustrations' => 'active'])
+
+@section('title', '- Illustrations')
 
 @section('content')
     <div>

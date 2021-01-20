@@ -1,4 +1,6 @@
-@extends('layouts.app', ['breadcrumbs' => ['Tags']])
+@extends('layouts.app', ['breadcrumbs' => ['Mots clés'], 'tags' => 'active'])
+
+@section('title', '- Mots clés')
 
 @section('content')
     <div>

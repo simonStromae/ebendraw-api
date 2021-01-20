@@ -1,4 +1,6 @@
-@extends('layouts.app', ['breadcrumbs' => ['Illustrations', $illustration->name]])
+@extends('layouts.app', ['breadcrumbs' => ['Illustrations', $illustration->name], 'illustrations' => 'active'])
+
+@section('title', '- '.$illustration->name)
 
 @section('content')
     <div>

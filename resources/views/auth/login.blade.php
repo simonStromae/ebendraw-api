@@ -20,63 +20,59 @@
 </head>
 <body>
 
+<div class="d-flex justify-content-center half">
+    <div class="contents">
 
-
-<div class="content">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 order-md-2">
-                <img src="/login-form/images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
-            </div>
-            <div class="col-md-6 contents">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="mb-4">
-                            <h3>Se Connecter Avec <strong>EbenDraw</strong></h3>
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-12">
+                    <div class="form-block mx-auto">
+                        <div class="mb-3">
+                            <h3 style="font-family: Futura; color: #005792">EbenDraw</h3>
                             <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
                         </div>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="form-group first">
-                                <label for="username">Identifiant</label>
-                                <input type="text" class="form-control @error('email') is-invalid @enderror" id="username" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                <label class="font-weight-bold" for="username">Nom d'utilisateur</label>
+                                <input type="text" name="email" class="@error("email") is-invalid @enderror form-control" value="{{ old('email') }}" id="username">
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="form-group last mb-4">
-                                <label for="password">Mot de passe</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" autocomplete="current-password">
+                            <div class="form-group last mb-3">
+                                <label for="password"><span class="font-weight-bold">Mot de passe</span> <small class="font-italic text-secondary">(doit contenir au moins 6 caractères)</small></label>
+                                <input type="password" name="password" class="@error("password") is-invalid @enderror form-control" id="password">
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                    <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror
                             </div>
 
-                            <div class="d-flex mb-5 align-items-center">
-                                <label class="control control--checkbox mb-0"><span class="caption">Garder ma session active</span>
-                                    <input type="checkbox" name="remember" checked="checked"/>
+                            <div class="d-sm-flex mb-4 align-items-center">
+                                <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Garder ma session active</span>
+                                    <input name="remember" type="checkbox" checked="checked"/>
                                     <div class="control__indicator"></div>
                                 </label>
-                                <span class="ml-auto"><a href="#" class="forgot-pass">Mot de passe oublié</a></span>
+                                {{--<span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>--}}
                             </div>
 
-                            <input type="submit" value="Se connecter" class="btn text-white btn-block btn-primary">
+                            <button type="submit" class="btn btn-block btn-primary">Se Connecter</button>
 
                         </form>
                     </div>
+                    <small class="text-black-50 d-flex justify-content-center mt-4">
+                        Copyright 2020 -
+                        <script type="text/javascript"> document.write((new Date()).getFullYear())</script>
+                        <i class="mx-1 text-dark">ALpha Labo</i> Inc. Version 1.0.0
+                    </small>
                 </div>
-
             </div>
-
         </div>
     </div>
-</div>
 
+
+</div>
 
 <script src="/login-form/js/jquery-3.3.1.min.js"></script>
 <script src="/login-form/js/popper.min.js"></script>

@@ -1,4 +1,6 @@
-@extends('layouts.app', ['breadcrumbs' => ['Roles']])
+@extends('layouts.app', ['breadcrumbs' => ['Roles'], 'roles' => 'active'])
+
+@section('title', '- Rôles')
 
 @section('content')
     <div>

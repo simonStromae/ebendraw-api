@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} @yield('title')</title>
 
     <link rel="shortcut icon" href="/master/img/favicon.png">
 
@@ -46,7 +46,8 @@
             @yield('content')
 
             <footer class="content-footer">
-                Copyright 2020 <span class="text-danger font-weight-bolder">ALpha Labo</span>, Inc. Version 1.0.0
+                Copyright 2020
+                <span class="text-danger font-weight-bolder">ALpha Labo</span>, Inc. Version 1.0.0
             </footer>
         </main>
     </div>

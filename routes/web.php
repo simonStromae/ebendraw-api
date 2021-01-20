@@ -18,12 +18,16 @@ Route::redirect('/', '/login');
 
 
 Route::middleware("auth")->group(function (){
+
     Route::get('/dashboard', function(){
         return view('welcome');
     })->name('dashboard');
 
-    Route::resource('roles', 'RoleController');
-    Route::resource('users', 'UserController');
+    Route::middleware('admin')->group(function (){
+        Route::resource('roles', 'RoleController');
+        Route::resource('users', 'UserController');
+    });
+
     Route::resource('tags', 'TagController');
     Route::resource('illustrations', 'IllustrationController');
 

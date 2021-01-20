@@ -1,4 +1,6 @@
-@extends('layouts.app', ['breadcrumbs' => ['Utilisateurs']])
+@extends('layouts.app', ['breadcrumbs' => ['Utilisateurs'], 'users' => 'active'])
+
+@section('title', '- Utilisateurs')
 
 @section('content')
     <div>
