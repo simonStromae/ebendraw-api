@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::namespace('API')->prefix("illustrations")->group(function (){
+Route::middleware('header.api')->namespace('API')->prefix("illustrations")->group(function (){
     Route::get('/inRandom/{number?}', 'IllustrationController@inRandom');
     Route::get('/search/{value?}', 'IllustrationController@resultSearch');
 });
