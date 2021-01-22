@@ -44,7 +44,3 @@ Auth::routes(['register' => false]);
     return \Illuminate\Support\Facades\Hash::make('password');
 });*/
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/search/{value}', function($value){
-    return $value;
-});
