@@ -20,14 +20,16 @@
                     <i class="fi flaticon-add"></i>
                     Nouvelle Illustration
                 </a>
-                <a href="{{ route('roles.create') }}" role="button" class="btn btn-secondary btn-rounded-f btn-block fs-mini">
-                    <i class="fi flaticon-add"></i>
-                    Nouveau Rôle
-                </a>
-                <a href="{{ route('users.create') }}" role="button" class="btn btn-dark btn-rounded-f btn-block fs-mini">
-                    <i class="fi flaticon-add"></i>
-                    Nouveau Utilisateur
-                </a>
+                @if(Gate::allows('admin-settings'))
+                    <a href="{{ route('roles.create') }}" role="button" class="btn btn-secondary btn-rounded-f btn-block fs-mini">
+                        <i class="fi flaticon-add"></i>
+                        Nouveau Rôle
+                    </a>
+                    <a href="{{ route('users.create') }}" role="button" class="btn btn-dark btn-rounded-f btn-block fs-mini">
+                        <i class="fi flaticon-add"></i>
+                        Nouveau Utilisateur
+                    </a>
+                @endif
             </div>
         </div>
     </section>
