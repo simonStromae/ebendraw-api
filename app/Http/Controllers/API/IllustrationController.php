@@ -12,6 +12,10 @@ use Illuminate\Support\Str;
 
 class IllustrationController extends Controller
 {
+    /**
+     * Récupération aléatoire d'une collection d'illustrations
+     * @param int|null $value
+     */
     public function inRandom(int $value = null){
 
         $illustrations = ((is_null($value)) ? Illustration::take(6) : Illustration::take($value))->inRandomOrder()->get();
@@ -19,30 +23,33 @@ class IllustrationController extends Controller
         return IllustrationResource::collection($illustrations);
     }
 
+    /**
+     * Définition d'une macro pour récupérer une collection d'illustrations
+     * Récupération des tags en fonction de $searchInput
+     * Récupération d'une collection d'illustrations en fonction des tags récupérer
+     * Passage array(array()) -> array()
+     * @param string|null $searchInput
+     */
     public function resultSearch(string $searchInput = null){
 
         $final_result = [];
 
-        /**/
         Collection::macro('illustrations', function(){
             return $this->map(function ($value){
                 return $value->illustrations;
             });
         });
 
-        /**/
         $results = Tag::all()->filter(function ($tag) use ($searchInput) {
             return Str::contains(strtolower($tag['name']), strtolower($searchInput));
         })->illustrations();
 
-        /**/
         if (count($results) > 0){
             foreach ($results as $r){
                 $result = $r;
             }
             $final_result = IllustrationResource::collection($result);
         }
-
 
         return $final_result;
     }
