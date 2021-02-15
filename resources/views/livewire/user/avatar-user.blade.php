@@ -1,6 +1,6 @@
 <div>
     <div class="d-flex justify-content-center">
-        <img class="rounded-circle" src="{{ show_avatar() }}" alt="" width="200px" height="200px">
+        <img class="rounded-circle" src="{{ is_null(user_connect()->avatar) ? "/master/img/!logged-user.jpg" : show_avatar() }}" alt="" width="200px" height="200px">
     </div>
 
     <form wire:submit.prevent="update_avatar_user" class="d-flex justify-content-center align-items-center">

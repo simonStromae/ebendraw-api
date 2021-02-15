@@ -28,47 +28,49 @@
                             </thead>
                             <tbody>
                                 @forelse($users as $user)
-                                    <tr>
-                                        <td class="d-none d-md-table-cell">{{ $user->id }}</td>
-                                        <td>
-                                            <img class="img-rounded" src="{{ show_avatar($user->avatar) }}" alt="" width="80px">
-                                        </td>
-                                        <td class="d-none d-md-table-cell">
-                                            <p class="no-margin">
-                                                <small>
-                                                    <span class="fw-semi-bold">Nom :</span>
-                                                    <span class="text-semi-muted">&nbsp; {{ $user->name }}</span>
-                                                </small>
-                                            </p>
-                                            <p>
-                                                <small>
-                                                    <span class="fw-semi-bold">Email :</span>
-                                                    <span class="text-semi-muted">&nbsp; {{ $user->email }}</span>
-                                                </small>
-                                            </p>
-                                        </td>
-                                        <td>{{ $user->username }}</td>
-                                        <td class="font-weight-bold">
-                                            {{ $user->role->name }}
-                                        </td>
-                                        <td class="width-150">
-                                            <div class="btn-group">
-                                                <button class="btn btn-sm btn-inverse dropdown-toggle" data-toggle="dropdown">
-                                                    &nbsp; Actions &nbsp;
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a class="dropdown-item" href="{{ route('users.show', $user->id) }}">Détails</a></li>
-                                                    <li><a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">Modifier</a></li>
-                                                    <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-{{ $user->id }}">Supprimer</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        @include('layouts.partials.delete-modal',[
-                                                   'id'=> $user->id,
-                                                  "route"=> route('users.destroy', $user->id),
-                                                  "sms"=> "Vouler-vous supprimer définitivement l'utilisateur : <strong>$user->name</strong> ?"
-                                               ])
-                                    </tr>
+                                    @if($user->id !== user_connect()->id)
+                                        <tr>
+                                            <td class="d-none d-md-table-cell">{{ $user->id }}</td>
+                                            <td>
+                                                <img class="img-rounded" src="{{ is_null($user->avatar) ? "/master/img/!logged-user.jpg" : show_avatar($user->avatar) }}" alt="" width="80px">
+                                            </td>
+                                            <td class="d-none d-md-table-cell">
+                                                <p class="no-margin">
+                                                    <small>
+                                                        <span class="fw-semi-bold">Nom :</span>
+                                                        <span class="text-semi-muted">&nbsp; {{ $user->name }}</span>
+                                                    </small>
+                                                </p>
+                                                <p>
+                                                    <small>
+                                                        <span class="fw-semi-bold">Email :</span>
+                                                        <span class="text-semi-muted">&nbsp; {{ $user->email }}</span>
+                                                    </small>
+                                                </p>
+                                            </td>
+                                            <td>{{ $user->username }}</td>
+                                            <td class="font-weight-bold">
+                                                {{ $user->role->name }}
+                                            </td>
+                                            <td class="width-150">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-sm btn-inverse dropdown-toggle" data-toggle="dropdown">
+                                                        &nbsp; Actions &nbsp;
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li><a class="dropdown-item" href="{{ route('users.show', $user->id) }}">Détails</a></li>
+                                                        <li><a class="dropdown-item" href="{{ route('users.edit', $user->id) }}">Modifier</a></li>
+                                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-{{ $user->id }}">Supprimer</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                            @include('layouts.partials.delete-modal',[
+                                                       'id'=> $user->id,
+                                                      "route"=> route('users.destroy', $user->id),
+                                                      "sms"=> "Vouler-vous supprimer définitivement l'utilisateur : <strong>$user->name</strong> ?"
+                                                   ])
+                                        </tr>
+                                    @endif
                                 @empty
                                     <tr>
                                         <td colspan="5">

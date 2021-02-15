@@ -47,7 +47,7 @@
                     <a href="#" class="dropdown-toggle no-caret nav-link" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false" data-position="bottom-middle-aligned" data-disable-interaction="false">
                         <span class="thumb-sm avatar float-left">
-                            <img class="rounded-circle" src="{{ show_avatar() }}" alt="...">
+                            <img class="rounded-circle" src="{{ is_null(user_connect()->avatar) ? "/master/img/!logged-user.jpg" : show_avatar() }}" alt="...">
                         </span>
     &nbsp;                   &nbsp;
                         <strong>{{ user_name('username') }}</strong>&nbsp;

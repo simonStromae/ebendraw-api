@@ -22,15 +22,17 @@
             <!-- #notifications-dropdown-menu goes here when screen collapsed to xs or sm -->
         </div>
         <!-- main notification links are placed inside of .sidebar-nav -->
-        <ul class="sidebar-nav">
-            <li class=" {{ $dashboard ?? '' }}">
-                <!-- an example of nested submenu. basic bootstrap collapse component -->
-                <a href="{{ route('dashboard') }}">
-                    <span class="icon"><i class="fi flaticon-home"></i></span>
-                    Tableau de bord
-                </a>
-            </li>
-        </ul>
+        @if(Gate::allows('admin-settings'))
+            <ul class="sidebar-nav">
+                <li class=" {{ $dashboard ?? '' }}">
+                    <!-- an example of nested submenu. basic bootstrap collapse component -->
+                    <a href="{{ route('dashboard') }}">
+                        <span class="icon"><i class="fi flaticon-home"></i></span>
+                        Tableau de bord
+                    </a>
+                </li>
+            </ul>
+        @endif
         <!-- every .sidebar-nav may have a title -->
         <h5 class="sidebar-nav-title">Général</h5>
         <ul class="sidebar-nav">

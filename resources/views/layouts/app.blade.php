@@ -25,6 +25,12 @@
         .inset-0{
             margin: 45px 45px 0 0;
         }
+        .bg-red-500{
+            background-color: #f05252
+        }
+        .text-red-500{
+            color: #f05252
+        }
     </style>
 </head>
 <body>

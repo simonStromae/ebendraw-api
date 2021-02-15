@@ -18,21 +18,25 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a class="dropdown-item" href="{{ route('illustrations.show', $illustration->id) }}">Détails</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('illustrations.edit', $illustration->id) }}">Modifier</a></li>
-                                        <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-{{ $illustration->id }}">Supprimer</a></li>
+                                        @if(user_connect()->id === $illustration->user->id)
+                                            <li><a class="dropdown-item" href="{{ route('illustrations.edit', $illustration->id) }}">Modifier</a></li>
+                                            <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#modal-{{ $illustration->id }}">Supprimer</a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
                         </header>
                         <div class="widget-body">
-                            <div class="d-flex justify-content-center align-items-center mb-lg">
-                                <img class="m-3" src="{{ show_svg($illustration->svg) }}" width="200px">
+                            <div style="min-height: 200px" class="d-flex justify-content-center align-items-center mb-lg">
+                                <img class="m-3" style="max-width: 200px; width: 100%" src="{{ show_svg($illustration->svg) }}">
                             </div>
-                            <h4>{{ $illustration->name }}</h4>
-                            <p>
-                                {{ $illustration->description }}
-                            </p>
-                            <p class="text-right">Mise à jour : <strong>{{ $illustration->updated_at }}</strong></p>
+                            <div style="max-height: 350px;">
+                                <h4>{{ $illustration->name }}</h4>
+                                <p style="overflow: auto; min-height: 100px">
+                                    {{ $illustration->description }}
+                                </p>
+                                <p class="text-right">Mise à jour : <strong>{{ $illustration->updated_at }}</strong></p>
+                            </div>
                         </div>
                     </section>
                 </div>

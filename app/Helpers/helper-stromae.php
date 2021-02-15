@@ -1,6 +1,8 @@
 <?php
 
+use App\Illustration;
 use App\News;
+use App\Role;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -21,6 +23,12 @@ if(!function_exists('generatePassword')){
         }
 
         return $result;
+    }
+}
+
+if (!function_exists('user_connect')){
+    function user_connect(){
+        return Auth::user();
     }
 }
 
@@ -70,8 +78,7 @@ if(!function_exists('show_avatar')){
     function show_avatar(string $avatar=null):string
     {
 
-
-        if (is_null($avatar)){
+        if (is_null($avatar) && Auth::check()){
 
             $avatar = Auth::user()->avatar;
 
@@ -84,7 +91,7 @@ if(!function_exists('show_avatar')){
             return $avatar ;
         }
 
-        return !empty ($avatar) ? asset('storage').'/avatars/'.$avatar : "/back-office/dist/img/avatar4.png";
+        return asset('storage').'/avatars/'.$avatar;
     }
 }
 
@@ -167,4 +174,27 @@ if(!function_exists('my_illustrations')){
     function my_illustrations():int{
         return Auth::user()->illustrations->count();
     }
+}
+
+if(!function_exists('illustrations_recent')){
+    function illustrations_recent($id_user){
+        return Illustration::where('user_id', $id_user)->orderBy('created_at', 'desc')->get()->take(5);
+    }
+}
+
+if (!function_exists('user')){
+    function user(string $role_user=null):string {
+
+        $result = ( !is_null($role_user) ) ? ( Role::where('name', strtolower($role_user))->first()->users->count() ) : User::count();
+
+        return addZero($result);
+    }
+}
+
+function illustrations(){
+    return addZero(Illustration::count());
+}
+
+function patterns(){
+    return addZero(\App\Pattern::count());
 }

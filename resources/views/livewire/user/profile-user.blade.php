@@ -46,6 +46,13 @@
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-dark">Sauvegarder les modifications</button>
+            <a class="ml-3 text-white btn bg-red-500" data-toggle="modal" data-target="#modal-{{ user_connect()->id }}"><i class="fi flaticon-trash mr-2"></i>Supprimer mon compte</a>
         </div>
     </form>
+
+    @include('layouts.partials.delete-modal',[
+           'id'=> user_connect()->id,
+          "route"=> route('users.destroy', user_connect()->id),
+          "sms"=> "Souhaitez-vous véritablement supprimer votre compte ?"
+       ])
 </div>

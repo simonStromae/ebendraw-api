@@ -1,5 +1,7 @@
 @extends('layouts.app', ['breadcrumbs' => ['Mes illustrations']])
 
+@section('title', '- Mes Illustrations')
+
 @section('content')
     <div>
         <div class="row">
@@ -55,7 +57,7 @@
                                 <tr>
                                     <td colspan="6">
                                         Vous n'avez créé aucune illustration pour l'instant. vous pouvez profiter pour en créer
-                                        <i class="fi flaticon-like"></i><a href="{{ route('$illustrations.create') }}" class="ml-2 text-danger">Ajouter une illustration</a>
+                                        <i class="fi flaticon-like"></i><a href="{{ route('illustrations.create') }}" class="ml-2 text-danger">Ajouter une illustration</a>
                                     </td>
                                 </tr>
                             @endforelse

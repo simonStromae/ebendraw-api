@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body text-center">
-                <h3><i class="fa fa-exclamation-triangle text-danger"></i> Attention !</h3>
+                <h3><i class="fa fa-exclamation-triangle text-red-500"></i> Attention !</h3>
                 <p>{!! $sms ??  "Souhaitez-vous véritablement Supprimer ?" !!}</p>
             </div>
             <div class="modal-footer">
@@ -17,7 +17,7 @@
                     @method('delete')
 
                     @csrf
-                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                    <button type="submit" class="btn bg-red-500 text-white">Supprimer</button>
                 </form>
             </div>
         </div>

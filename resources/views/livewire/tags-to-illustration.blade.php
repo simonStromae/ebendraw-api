@@ -7,9 +7,11 @@
             </span>
         @endforeach
     </div>
-    <div class="col-xl-5 col-md-12 mb-xlg">
-        <livewire:add-tag-to-illustration :illustration="$illustration" />
-    </div>
+    @if(user_connect()->id === $illustration->user->id)
+        <div class="col-xl-5 col-md-12 mb-xlg">
+            <livewire:add-tag-to-illustration :illustration="$illustration" />
+        </div>
+    @endif
 </div>
 
 @push('css')

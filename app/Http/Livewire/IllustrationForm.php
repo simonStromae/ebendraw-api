@@ -56,12 +56,12 @@ class IllustrationForm extends Component
         $illustration->description = $this->description;
         $illustration->user_id = Auth::id();
 
-        $illustration->tags()->syncWithoutDetaching($this->tags);
 
         if (!is_null($this->svg))
             $illustration->svg = saveSvg($this->svg, $this->name);
 
         $illustration->save();
+        $illustration->tags()->syncWithoutDetaching($this->tags);
 
         notify()->success('Cette illustration a bien été enregistré', 'Illustrations');
 
