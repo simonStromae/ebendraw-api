@@ -18,7 +18,7 @@ class IllustrationController extends Controller
      */
     public function inRandom(int $value = null){
 
-        $illustrations = ((is_null($value)) ? Illustration::take(6) : Illustration::take($value))->inRandomOrder()->get();
+        $illustrations = ((is_null($value)) ? Illustration::take(10) : Illustration::take($value))->inRandomOrder()->get();
 
         return IllustrationResource::collection($illustrations);
     }
@@ -53,4 +53,5 @@ class IllustrationController extends Controller
 
         return $final_result;
     }
+
 }

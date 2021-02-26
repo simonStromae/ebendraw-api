@@ -21,6 +21,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \Fruitcake\Cors\HandleCors::class,
+//        \App\Http\Middleware\HeaderApi::class
     ];
 
     /**
@@ -42,6 +44,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
         ],
     ];
 
@@ -65,6 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'admin' => \App\Http\Middleware\AdminAccess::class,
-        'header.api' => \App\Http\Middlewarre\HeaderApi::class,
+        'header.api' => \App\Http\Middleware\HeaderApi::class,
     ];
 }

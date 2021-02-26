@@ -50,6 +50,7 @@
                     <button type="submit" class="btn btn-dark float-right">{{ $action }}</button>
                 </div>
             </form>
+
         </div>
     </section>
 </div>

@@ -18,6 +18,7 @@
     <link href="/master/css/application.min.css" rel="stylesheet">
     <!--[if IE 9]>
     <link href="/master/css/application-ie9-part2.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <![endif]-->
     @livewireStyles
     @stack('css')

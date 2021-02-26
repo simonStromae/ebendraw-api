@@ -18,7 +18,7 @@ class IllustrationResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'svg_url' => url($this->svg),
+            'svg' => url("/storage/svg/$this->svg"),
             'updated_at' => $this->updated_at,
             'author' => new UserResource($this->user),
             'tags' => $this->tags

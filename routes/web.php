@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
 
-
 Route::middleware("auth")->group(function (){
 
     Route::middleware('admin')->group(function (){
@@ -44,3 +43,4 @@ Auth::routes(['register' => false]);
     return \Illuminate\Support\Facades\Hash::make('password');
 });*/
 Route::get('/home', 'HomeController@index')->name('home');
+

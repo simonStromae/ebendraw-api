@@ -22,4 +22,5 @@ class UploadFilesService
 
         return $imagename;
     }
+
 }

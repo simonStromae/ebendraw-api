@@ -167,6 +167,7 @@ return [
          */
         Mckenziearts\Notify\LaravelNotifyServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
 
         /*
          * Application Service Providers...
